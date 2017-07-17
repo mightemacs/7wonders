@@ -47,40 +47,47 @@
             <tbody>
               <tr>
                 <td>Money</td>
-                <td><input type="text" name="txt_money" /></td>
+                <td><input type="text" id="txt_money" value="0" onchange="sumDistricts()"></td>
               </tr>
               <tr bgcolor="#c12e2a">
                 <td>Military</td>
-                <td><input type="text" name="txt_military" /></td>
+                <td><input type="text" onchange="sumDistricts()" id="txt_military" /></td>
               </tr>
               <tr>
                 <td>Wonders</td>
-                <td><input type="text" name="txt_wonders" /></td>
+                <td><input type="text" onchange="sumDistricts()" id="txt_wonders" /></td>
               </tr>
               <tr bgcolor="#265a88">
                 <td>Blue</td>
-                <td><input type="text" name="txt_blue" /></td>
+                <td><input type="text" onchange="sumDistricts()" id="txt_blue" /></td>
               </tr>
               <tr bgcolor="#eb9316">
                 <td>Yellow</td>
-                <td><input type="text" name="txt_yellow" /></td>
+                <td><input type="text" onchange="sumDistricts()" id="txt_yellow" /></td>
               </tr>
               <tr bgcolor="#8942f4">
                 <td>Purple</td>
-                <td><input type="text" name="txt_purple" /></td>
+                <td><input type="text" onchange="sumDistricts()" id="txt_purple" /></td>
               </tr>
               <tr bgcolor="#419641">
                 <td>Green</td>
-                <td><input type="text" name="txt_green" /></td>
+                <td><input type="text" onchange="sumDistricts()" id="txt_green" /></td>
               </tr>
               <tr bgcolor="#000000">
                 <td>Black</td>
-                <td><input type="text" name="txt_black" /></td>
+                <td><input type="text" onchange="sumDistricts()" id="txt_black" /></td>
               </tr>
               <tr>
                 <td>Leaders</td>
-                <td><input type="text" name="txt_leaders" /></td>
+                <td><input type="text" onchange="sumDistricts()" id="txt_leaders" /></td>
               </tr>
+	      <tr>
+		<hr />
+	      </tr>
+	      <tr>
+		<td>TOTAL</td>
+		<td><input type="text" id="txt_total" disabled="true" value="0" /></td>
+	      </tr>
             </tbody>
           </table>
         </div>
@@ -89,5 +96,26 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+      function zeroNull (test) {
+      if (isNaN(test)) { return 0; }
+      return test;
+      }
+      function sumDistricts () {
+      var iMoney = zeroNull(parseInt(document.getElementById('txt_money').value));
+      var iMilitary = zeroNull(parseInt(document.getElementById('txt_military').value));
+      var iWonders = zeroNull(parseInt(document.getElementById('txt_wonders').value));
+      var iBlue = zeroNull(parseInt(document.getElementById('txt_blue').value));
+      var iYellow = zeroNull(parseInt(document.getElementById('txt_yellow').value));
+      var iPurple = zeroNull(parseInt(document.getElementById('txt_purple').value));
+      var iGreen = zeroNull(parseInt(document.getElementById('txt_green').value));
+      var iBlack = zeroNull(parseInt(document.getElementById('txt_black').value));
+      var iLeaders = zeroNull(parseInt(document.getElementById('txt_leaders').value));
+
+      var total = iMoney + iMilitary + iWonders + iBlue + iYellow + iPurple + iGreen + iBlack + iLeaders;
+      document.getElementById('txt_total').value = total;
+      };
+    </script>
   </body>
 </html>
